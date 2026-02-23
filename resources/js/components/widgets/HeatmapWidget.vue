@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import VChart from 'vue-echarts'
+import { computed, defineAsyncComponent } from 'vue'
 import type { WidgetData, WidgetDefinition } from '@/types/widget'
 import { useChartRenderer } from '@/composables/useChartRenderer'
+
+const VChart = defineAsyncComponent(() => import('vue-echarts'))
 
 const props = defineProps<{
     data: WidgetData

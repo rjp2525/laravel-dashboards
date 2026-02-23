@@ -1,7 +1,6 @@
 import type { App, Plugin } from 'vue'
 import type { ChartRenderer } from '@/types/chart'
 import { CHART_RENDERER_KEY } from '@/composables/useChartRenderer'
-import { EChartsRenderer } from '@/renderers/echarts'
 import Dashboard from '@/components/Dashboard.vue'
 import DashboardToolbar from '@/components/DashboardToolbar.vue'
 import WidgetWrapper from '@/components/WidgetWrapper.vue'
@@ -38,7 +37,6 @@ export { EChartsAdapter } from '@/adapters/EChartsAdapter'
 export { ApexChartsAdapter } from '@/adapters/ApexChartsAdapter'
 export { ChartJsAdapter } from '@/adapters/ChartJsAdapter'
 export { UnovisAdapter } from '@/adapters/UnovisAdapter'
-export { EChartsRenderer } from '@/renderers/echarts'
 
 export {
     Dashboard,
@@ -77,10 +75,12 @@ export interface DashboardPluginOptions {
 
 const LaravelDashboardPlugin: Plugin<[DashboardPluginOptions?]> = {
     install(app: App, options?: DashboardPluginOptions) {
-        const renderer = options?.renderer ?? EChartsRenderer
+        const renderer = options?.renderer
 
-        renderer.setup?.(app)
-        app.provide(CHART_RENDERER_KEY, renderer)
+        if (renderer) {
+            renderer.setup?.(app)
+            app.provide(CHART_RENDERER_KEY, renderer)
+        }
 
         app.component('Dashboard', Dashboard)
         app.component('DashboardToolbar', DashboardToolbar)
