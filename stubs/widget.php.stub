@@ -1,0 +1,41 @@
+<?php
+
+namespace {{ namespace }};
+
+use Reno\Dashboard\Contracts\DataProvider;
+use Reno\Dashboard\DataProviders\CallbackDataProvider;
+use Reno\Dashboard\Support\WidgetData;
+use Reno\Dashboard\Widgets\StatWidget;
+
+class {{ class }} extends StatWidget
+{
+    public function key(): string
+    {
+        return '{{ key }}';
+    }
+
+    public function label(): string
+    {
+        return '{{ label }}';
+    }
+
+    public function dataProvider(): DataProvider
+    {
+        return CallbackDataProvider::from(function ($context) {
+            // TODO: Replace with your data logic
+            return WidgetData::stat(0);
+        });
+    }
+
+    protected function resolveCurrentValue($context): mixed
+    {
+        // TODO: Return the current value
+        return 0;
+    }
+
+    protected function resolvePreviousValue($context): mixed
+    {
+        // TODO: Return the previous value for comparison
+        return null;
+    }
+}

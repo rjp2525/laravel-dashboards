@@ -1,0 +1,89 @@
+{
+    "name": "rjp2525/laravel-dashboards",
+    "description": "A dynamic, customizable dashboard package for Laravel with Vue 3, Inertia.js, and GridStack.js",
+    "keywords": [
+        "rjp2525",
+        "laravel-dashboards",
+        "laravel",
+        "dashboard",
+        "widgets",
+        "gridstack",
+        "inertia",
+        "vue"
+    ],
+    "homepage": "https://github.com/rjp2525/laravel-dashboards",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Reno Philibert",
+            "email": "hello@reno.sh",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.4",
+        "illuminate/contracts": "^11.0|^12.0",
+        "illuminate/database": "^11.0|^12.0",
+        "illuminate/http": "^11.0|^12.0",
+        "illuminate/routing": "^11.0|^12.0",
+        "illuminate/support": "^11.0|^12.0"
+    },
+    "require-dev": {
+        "larastan/larastan": "^3.9",
+        "laravel/pint": "^1.0",
+        "orchestra/testbench": "^9.0|^10.0",
+        "pestphp/pest": "^4.0",
+        "pestphp/pest-plugin-laravel": "^3.0|^4.0",
+        "phpstan/phpstan": "^2.1",
+        "phpstan/phpstan-deprecation-rules": "^2.0",
+        "rector/rector": "^2.3",
+        "livewire/livewire": "^3.0",
+        "spatie/ray": "^1.28"
+    },
+    "suggest": {
+        "livewire/livewire": "Required to use the Livewire dashboard components (^3.0).",
+        "laravel/reverb": "Required for real-time push updates via WebSockets."
+    },
+    "autoload": {
+        "psr-4": {
+            "Reno\\Dashboard\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Reno\\Dashboard\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Reno\\Dashboard\\DashboardServiceProvider"
+            ],
+            "aliases": {
+                "Dashboard": "Reno\\Dashboard\\Facades\\Dashboard"
+            }
+        }
+    },
+    "archive": {
+        "exclude": [
+            "/demo",
+            "/docs",
+            "/tests",
+            "/.github"
+        ]
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
